@@ -1,0 +1,3515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Brian Gicaro D. — Full Stack WordPress Developer & Web Designer</title>
+
+  <meta
+    name="description"
+    content="Brian Gicaro D. — Full Stack WordPress Developer, Elementor Pro Specialist, Web Designer, SEO Specialist, GHL Automation, Graphic Designer and SMM."
+  >
+
+  <meta
+    name="theme-color"
+    content="#08080D"
+  >
+
+  <meta
+    name="robots"
+    content="index, follow"
+  >
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+
+    /* =========================================================
+       ROOT
+       ========================================================= */
+
+    :root {
+      --bg: #08080D;
+      --bg-soft: #0D0D15;
+      --panel: #11111A;
+      --panel-2: #161622;
+
+      --line: rgba(255,255,255,.08);
+      --line-soft: rgba(255,255,255,.05);
+
+      --ink: #F4F4F8;
+      --ink-muted: #9A9AAF;
+      --ink-faint: #646477;
+
+      --pink: #FF3D8A;
+      --violet: #7C5CFF;
+      --cyan: #3DD8FF;
+      --teal: #00C896;
+      --gold: #E8A020;
+
+      --gradient:
+        linear-gradient(
+          120deg,
+          #FF3D8A 0%,
+          #7C5CFF 52%,
+          #3DD8FF 100%
+        );
+
+      --gradient-soft:
+        linear-gradient(
+          135deg,
+          rgba(255,61,138,.12),
+          rgba(124,92,255,.12),
+          rgba(61,216,255,.08)
+        );
+
+      --radius-xl: 28px;
+      --radius-lg: 22px;
+      --radius-md: 18px;
+      --radius-sm: 10px;
+
+      --container: 1180px;
+
+      --shadow:
+        0 20px 60px -25px rgba(124,92,255,.35);
+    }
+
+
+    /* =========================================================
+       RESET
+       ========================================================= */
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px;
+    }
+
+    body {
+      margin: 0;
+
+      min-height: 100vh;
+
+      overflow-x: hidden;
+
+      background:
+        radial-gradient(
+          1100px 600px at 85% -10%,
+          rgba(124,92,255,.20),
+          transparent 60%
+        ),
+        radial-gradient(
+          900px 500px at 5% 5%,
+          rgba(255,61,138,.12),
+          transparent 58%
+        ),
+        var(--bg);
+
+      color: var(--ink);
+
+      font-family: "Inter", system-ui, sans-serif;
+
+      font-size: 16px;
+      line-height: 1.6;
+
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin-bottom: 0;
+    }
+
+    .display {
+      font-family: "Space Grotesk", sans-serif;
+    }
+
+    .mono {
+      font-family: "JetBrains Mono", monospace;
+    }
+
+
+    /* =========================================================
+       CONTAINER
+       ========================================================= */
+
+    .wrap {
+      width: min(
+        calc(100% - 48px),
+        var(--container)
+      );
+
+      margin-inline: auto;
+
+      position: relative;
+      z-index: 2;
+    }
+
+
+    /* =========================================================
+       BACKGROUND GRID
+       ========================================================= */
+
+    .grid-overlay {
+      position: fixed;
+      inset: 0;
+
+      z-index: 0;
+
+      pointer-events: none;
+
+      background-image:
+        linear-gradient(
+          rgba(255,255,255,.025) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          90deg,
+          rgba(255,255,255,.025) 1px,
+          transparent 1px
+        );
+
+      background-size: 64px 64px;
+
+      -webkit-mask-image:
+        radial-gradient(
+          1200px 700px at 60% 0%,
+          #000 10%,
+          transparent 75%
+        );
+
+      mask-image:
+        radial-gradient(
+          1200px 700px at 60% 0%,
+          #000 10%,
+          transparent 75%
+        );
+    }
+
+
+    /* =========================================================
+       SKIP LINK
+       ========================================================= */
+
+    .skip-link {
+      position: fixed;
+
+      left: -999px;
+      top: 0;
+
+      z-index: 999;
+
+      padding: 10px 16px;
+
+      background: var(--ink);
+      color: var(--bg);
+
+      border-radius: 0 0 10px 0;
+    }
+
+    .skip-link:focus {
+      left: 0;
+    }
+
+
+    /* =========================================================
+       FOCUS
+       ========================================================= */
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--violet);
+      outline-offset: 4px;
+      border-radius: 8px;
+    }
+
+
+    /* =========================================================
+       STATUS BAR
+       ========================================================= */
+
+    .statusbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+
+      border-bottom: 1px solid var(--line);
+
+      background: rgba(8,8,13,.78);
+
+      backdrop-filter: blur(18px) saturate(140%);
+      -webkit-backdrop-filter: blur(18px) saturate(140%);
+    }
+
+    .statusbar .wrap {
+      min-height: 68px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 20px;
+    }
+
+    .status-left {
+      display: flex;
+      align-items: center;
+
+      gap: 10px;
+
+      min-width: 0;
+
+      font-size: 12px;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+
+      flex: 0 0 8px;
+
+      border-radius: 50%;
+
+      background: var(--teal);
+
+      box-shadow:
+        0 0 0 4px rgba(0,200,150,.12),
+        0 0 18px rgba(0,200,150,.65);
+
+      animation: statusPulse 2.5s ease-in-out infinite;
+    }
+
+    @keyframes statusPulse {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: .45;
+      }
+
+    }
+
+    .status-text {
+      color: var(--ink-muted);
+    }
+
+    .status-text strong {
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .status-loc {
+      color: var(--ink-faint);
+    }
+
+
+    /* =========================================================
+       BUTTONS
+       ========================================================= */
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+
+      gap: 10px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      gap: 8px;
+
+      padding: 11px 18px;
+
+      border-radius: 999px;
+
+      border: 1px solid var(--line);
+
+      font-size: 13px;
+      font-weight: 600;
+
+      transition:
+        transform .25s ease,
+        background .25s ease,
+        border-color .25s ease,
+        box-shadow .25s ease;
+    }
+
+    .btn-primary {
+      background: var(--gradient);
+      color: #08080D;
+
+      border-color: transparent;
+
+      box-shadow:
+        0 10px 30px -12px rgba(255,61,138,.65);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+
+      box-shadow:
+        0 16px 35px -12px rgba(124,92,255,.7);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,.025);
+      color: var(--ink-muted);
+    }
+
+    .btn-secondary:hover {
+      transform: translateY(-2px);
+
+      color: var(--ink);
+
+      border-color: rgba(124,92,255,.35);
+
+      background: rgba(124,92,255,.07);
+    }
+
+
+    /* =========================================================
+       HERO
+       ========================================================= */
+
+    .hero {
+      padding: 92px 0 80px;
+    }
+
+    .hero-grid {
+      display: grid;
+
+      grid-template-columns:
+        minmax(0, 1.25fr)
+        minmax(260px, .75fr);
+
+      align-items: center;
+
+      gap: 70px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+
+      gap: 10px;
+
+      margin-bottom: 22px;
+
+      font-family: "JetBrains Mono", monospace;
+
+      font-size: 11px;
+      font-weight: 600;
+
+      letter-spacing: .14em;
+      text-transform: uppercase;
+
+      color: transparent;
+
+      background: var(--gradient);
+
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+
+    .eyebrow::before {
+      content: "";
+
+      width: 8px;
+      height: 8px;
+
+      border-radius: 3px;
+
+      background: var(--gradient);
+
+      box-shadow:
+        0 0 16px rgba(124,92,255,.5);
+    }
+
+    .hero h1 {
+      max-width: 850px;
+
+      font-family: "Space Grotesk", sans-serif;
+
+      font-size:
+        clamp(44px, 7vw, 78px);
+
+      line-height: .98;
+
+      letter-spacing: -.045em;
+
+      font-weight: 700;
+
+      margin-bottom: 24px;
+    }
+
+    .hero h1 .grad {
+      color: transparent;
+
+      background:
+        linear-gradient(
+          120deg,
+          #FF3D8A,
+          #7C5CFF,
+          #3DD8FF,
+          #FF3D8A
+        );
+
+      background-size: 300% auto;
+
+      -webkit-background-clip: text;
+      background-clip: text;
+
+      animation: textShine 7s linear infinite;
+    }
+
+    @keyframes textShine {
+
+      to {
+        background-position: 300% center;
+      }
+
+    }
+
+    .lede {
+      max-width: 680px;
+
+      margin-bottom: 32px;
+
+      color: var(--ink-muted);
+
+      font-size: 17px;
+
+      line-height: 1.8;
+    }
+
+    .lede strong {
+      color: var(--ink);
+
+      font-weight: 600;
+    }
+
+
+    /* =========================================================
+       HERO META
+       ========================================================= */
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+
+      gap: 8px;
+
+      margin-top: 28px;
+    }
+
+    .hero-chip {
+      padding: 7px 11px;
+
+      border: 1px solid var(--line);
+
+      border-radius: 999px;
+
+      background: rgba(255,255,255,.025);
+
+      color: var(--ink-muted);
+
+      font-family: "JetBrains Mono", monospace;
+
+      font-size: 10px;
+    }
+
+
+    /* =========================================================
+       HERO METRIC
+       ========================================================= */
+
+    .metric-wrapper {
+      animation:
+        heroFloat 6s ease-in-out infinite;
+    }
+
+    @keyframes heroFloat {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-8px);
+      }
+
+    }
+
+    .metric-card {
+      position: relative;
+
+      padding: 42px 30px;
+
+      overflow: hidden;
+
+      text-align: center;
+
+      border-radius: var(--radius-xl);
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(255,255,255,.035),
+          rgba(255,255,255,.01)
+        ),
+        var(--panel);
+
+      border: 1px solid var(--line);
+
+      box-shadow: var(--shadow);
+    }
+
+    .metric-card::before {
+      content: "";
+
+      position: absolute;
+      inset: 0;
+
+      padding: 1px;
+
+      border-radius: inherit;
+
+      background: var(--gradient);
+
+      opacity: .55;
+
+      -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+
+      -webkit-mask-composite: xor;
+
+      mask-composite: exclude;
+
+      pointer-events: none;
+    }
+
+    .metric-card::after {
+      content: "";
+
+      position: absolute;
+
+      width: 220px;
+      height: 220px;
+
+      top: -100px;
+      right: -80px;
+
+      border-radius: 50%;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(124,92,255,.22),
+          transparent 70%
+        );
+
+      pointer-events: none;
+    }
+
+    .metric-num {
+      position: relative;
+      z-index: 1;
+
+      margin-bottom: 8px;
+
+      font-family: "Space Grotesk", sans-serif;
+
+      font-size: clamp(76px, 9vw, 110px);
+
+      font-weight: 700;
+
+      line-height: .9;
+
+      color: transparent;
+
+      background: var(--gradient);
+
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+
+    .metric-label {
+      position: relative;
+      z-index: 1;
+
+      font-family: "JetBrains Mono", monospace;
+
+      font-size: 11px;
+
+      letter-spacing: .1em;
+
+      text-transform: uppercase;
+
+      color: var(--ink-muted);
+    }
+
+    .metric-status {
+      position: relative;
+      z-index: 1;
+
+      display: inline-flex;
+      align-items: center;
+
+      gap: 7px;
+
+      margin-top: 22px;
+
+      padding: 6px 10px;
+
+      border-radius: 999px;
+
+      background: rgba(0,200,150,.08);
+
+      border: 1px solid rgba(0,200,150,.2);
+
+      color: var(--teal);
+
+      font-family: "JetBrains Mono", monospace;
+
+      font-size: 9px;
+
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .metric-status::before {
+      content: "";
+
+      width: 6px;
+      height: 6px;
+
+      border-radius: 50%;
+
+      background: var(--teal);
+    }
+
+
+    /* =========================================================
+       SECTIONS
+       ========================================================= */
+
+    section {
+      padding: 78px 0;
+
+      border-top: 1px solid var(--line);
+    }
+
+    .section-head {
+      display: flex;
+
+      align-items: flex-end;
+      justify-content: space-between;
+
+      gap: 20px;
+
+      margin-bottom: 34px;
+    }
+
+    .category-badge {
+      display: inline-flex;
+      align-items: center;
+
+      gap: 7px;
+
+      margin-bottom: 11px;
+
+      padding: 6px 12px;
+
+      border-radius: 999px;
+
+      font-family: "JetBrains Mono", monospace;
+
+      font-size: 10px;
+      font-weight: 600;
+
+      letter-spacing: .08em;
+
+      text-transform: uppercase;
+    }
+
+    .badge-local {
+      color: var(--teal);
+
+      background: rgba(0,200,150,.08);
+
+      border: 1px solid rgba(0,200,150,.22);
+    }
+
+    .badge-intl {
+      color: var(--cyan);
+
+      background: rgba(61,216,255,.08);
+
+      border: 1px solid rgba(61,216,255,.22);
+    }
+
+    .section-title {
+      font-family: "Space Grotesk", sans-serif;
+
+      font-size: 36px;
+
+      line-height: 1.1;
+
+      font-weight: 700;
+
+      letter-spacing: -.025em;
+    }
+
+    .section-num {
+      color: var(--ink-faint);
+
+      font-family: "JetBrains Mono", monospace;
+
+      font-size: 11px;
+
+      white-space: nowrap;
+    }
+
+
+    /* =========================================================
+       PROJECT GRID
+       ========================================================= */
+
+    .project-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(
+          auto-fit,
+          minmax(
+            min(100%, 320px),
+            1fr
+          )
+        );
+
+      gap: 24px;
+    }
+
+
+    /* =========================================================
+       PROJECT CARD
+       ========================================================= */
+
+    .project-card {
+      --card-glow:
+        rgba(124,92,255,.35);
+
+      position: relative;
+
+      display: flex;
+      flex-direction: column;
+
+      min-width: 0;
+
+      overflow: hidden;
+
+      isolation: isolate;
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(255,255,255,.035),
+          rgba(255,255,255,.012)
+        ),
+        var(--panel);
+
+      border: 1px solid var(--line);
+
+      border-radius: 20px;
+
+      color: inherit;
+
+      transform: translateY(0);
+
+      transition:
+        transform .35s cubic-bezier(.16,1,.3,1),
+        border-color .35s ease,
+        box-shadow .35s ease,
+        background .35s ease;
+    }
+
+    .project-card::before {
+      content: "";
+
+      position: absolute;
+
+      inset: 0;
+
+      z-index: -1;
+
+      padding: 1px;
+
+      border-radius: inherit;
+
+      background:
+        linear-gradient(
+          120deg,
+          transparent 15%,
+          rgba(255,61,138,.7),
+          rgba(124,92,255,.8),
+          rgba(61,216,255,.7),
+          transparent 85%
+        );
+
+      background-size: 220% 220%;
+
+      opacity: 0;
+
+      transition: opacity .35s ease;
+
+      -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+
+      -webkit-mask-composite: xor;
+
+      mask-composite: exclude;
+
+      pointer-events: none;
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px);
+
+      border-color:
+        rgba(124,92,255,.45);
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(255,255,255,.05),
+          rgba(255,255,255,.018)
+        ),
+        var(--panel-2);
+
+      box-shadow:
+        0 24px 60px -24px var(--card-glow),
+        0 0 0 1px rgba(124,92,255,.08);
+    }
+
+    .project-card:hover::before {
+      opacity: 1;
+
+      animation:
+        cardBorderMove 3s linear infinite;
+    }
+
+    @keyframes cardBorderMove {
+
+      from {
+        background-position: 0% 50%;
+      }
+
+      to {
+        background-position: 200% 50%;
+      }
+
+    }
+
+
+    /* =========================================================
+       BROWSER HEADER
+       ========================================================= */
+
+    .browser-chrome {
+      min-width: 0;
+
+      display: flex;
+      align-items: center;
+
+      gap: 10px;
+
+      padding: 11px 14px;
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(255,255,255,.025),
+          rgba(0,0,0,.08)
+        );
+
+      border-bottom: 1px solid var(--line);
+    }
+
+    .chrome-dots {
+      display: flex;
+
+      gap: 6px;
+
+      flex-shrink: 0;
+    }
+
+    .chrome-dot {
+      width: 9px;
+      height: 9px;
+
+      border-radius: 50%;
+    }
+
+    .dot-red {
+      background: #FF5F57;
+    }
+
+    .dot-yellow {
+      background: #FFBD2E;
+    }
+
+    .dot-green {
+      background: #28C840;
+    }
+
+    .chrome-bar {
+      min-width: 0;
+
+      flex: 1;
+
+      overflow: hidden;
+
+      text-overflow: ellipsis;
+
+      white-space: nowrap;
+
+      padding: 6px 10px;
+
+      background: rgba(0,0,0,.18);
+
+      border: 1px solid var(--line-soft);
+
+      border-radius: 7px;
+
+      font-family: "JetBrains Mono", monospace;
+
+      font-size: 10.5px;
+
+      color: var(--ink-faint);
+
+      transition:
+        color .25s ease,
+        border-color .25s ease,
+        background .25s ease;
+    }
+
+    .project-card:hover .chrome-bar {
+      color: var(--ink-muted);
+
+      border-color:
+        rgba(124,92,255,.18);
+
+      background:
+        rgba(124,92,255,.05);
+    }
+
+
+    /* =========================================================
+       PROJECT PREVIEW
+       ========================================================= */
+
+    .preview-area {
+      position: relative;
+
+      height: 230px;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at center,
+          rgba(124,92,255,.08),
+          transparent 65%
+        ),
+        var(--bg-soft);
+    }
+
+    .preview-img {
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+
+      object-position: top center;
+
+      filter:
+        saturate(.92)
+        brightness(.92);
+
+      transform: scale(1);
+
+      transition:
+        transform .7s cubic-bezier(.16,1,.3,1),
+        filter .5s ease;
+    }
+
+    .project-card:hover .preview-img {
+      transform: scale(1.075);
+
+      filter:
+        saturate(1)
+        brightness(1);
+    }
+
+    .preview-area::after {
+      content: "";
+
+      position: absolute;
+
+      left: 0;
+      right: 0;
+      bottom: 0;
+
+      height: 45%;
+
+      background:
+        linear-gradient(
+          to top,
+          rgba(8,8,13,.65),
+          transparent
+        );
+
+      pointer-events: none;
+    }
+
+
+    /* =========================================================
+       PROJECT OVERLAY
+       ========================================================= */
+
+    .preview-overlay {
+      position: absolute;
+
+      inset: 0;
+
+      z-index: 3;
+
+      display: flex;
+
+      flex-direction: column;
+
+      align-items: center;
+      justify-content: center;
+
+      gap: 10px;
+
+      padding: 20px;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(8,8,13,.84),
+          rgba(18,18,28,.72)
+        );
+
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+
+      opacity: 0;
+
+      transform: scale(1.02);
+
+      transition:
+        opacity .3s ease,
+        transform .4s cubic-bezier(.16,1,.3,1);
+    }
+
+    .project-card:hover .preview-overlay,
+    .project-card:focus-visible .preview-overlay {
+      opacity: 1;
+
+      transform: scale(1);
+    }
+
+    .preview-visit {
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 7px;
+
+      padding: 11px 20px;
+
+      border-radius: 999px;
+
+      background: var(--gradient);
+
+      color: #08080D;
+
+      font-size: 13px;
+
+      font-weight: 700;
+
+      box-shadow:
+        0 10px 30px -10px rgba(255,61,138,.65);
+
+      transform: translateY(8px);
+
+      transition:
+        transform .3s ease,
+        box-shadow .3s ease;
+    }
+
+    .project-card:hover .preview-visit {
+      transform: translateY(0);
+    }
+
+    .preview-hint {
+      max-width: 90%;
+
+      overflow: hidden;
+
+      text-overflow: ellipsis;
+
+      white-space: nowrap;
+
+      font-family: "JetBrains Mono", monospace;
+
+      font-size: 10.5px;
+
+      color: var(--ink-muted);
+    }
+
+
+    /* =========================================================
+       PROJECT FOOTER
+       ========================================================= */
+
+    .card-footer {
+      min-width: 0;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 18px;
+
+      padding: 19px 20px;
+
+      border-top: 1px solid var(--line);
+    }
+
+    .card-footer > div:first-child {
+      min-width: 0;
+    }
+
+    .card-name {
+      overflow: hidden;
+
+      text-overflow: ellipsis;
+
+      font-family: "Space Grotesk", sans-serif;
+
+      font-size: 15px;
+
+      font-weight: 700;
+
+      color: var(--ink);
+    }
+
+    .card-type {
+      margin-top: 4px;
+
+      overflow: hidden;
+
+      text-overflow: ellipsis;
+
+      font-family: "JetBrains Mono", monospace;
+
+      font-size: 10.5px;
+
+      color: var(--ink-muted);
+    }
+
+    .card-arrow {
+      width: 36px;
+      height: 36px;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      flex-shrink: 0;
+
+      border: 1px solid var(--line);
+
+      border-radius: 50%;
+
+      background: rgba(255,255,255,.02);
+
+      font-size: 14px;
+
+      color: var(--ink-faint);
+
+      transition:
+        transform .3s cubic-bezier(.16,1,.3,1),
+        background .3s ease,
+        color .3s ease,
+        border-color .3s ease;
+    }
+
+    .project-card:hover .card-arrow {
+      transform:
+        translate(3px,-3px);
+
+      background: var(--violet);
+
+      border-color: var(--violet);
+
+      color: #fff;
+
+      box-shadow:
+        0 8px 20px -8px rgba(124,92,255,.65);
+    }
+
+
+    /* =========================================================
+       MORE SERVICES
+       ========================================================= */
+
+    .more-card {
+      position: relative;
+
+      overflow: hidden;
+
+      display: grid;
+
+      grid-template-columns:
+        minmax(0, 1fr)
+        auto;
+
+      align-items: center;
+
+      gap: 40px;
+
+      padding: 44px;
+
+      border: 1px solid var(--line);
+
+      border-radius: var(--radius-xl);
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(255,255,255,.035),
+          rgba(255,255,255,.012)
+        ),
+        var(--panel);
+
+      box-shadow:
+        0 20px 60px -35px rgba(232,160,32,.35);
+    }
+
+    .more-card::before {
+      content: "";
+
+      position: absolute;
+
+      width: 500px;
+      height: 300px;
+
+      right: -150px;
+      top: -160px;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(232,160,32,.13),
+          transparent 70%
+        );
+
+      pointer-events: none;
+    }
+
+    .more-title {
+      position: relative;
+
+      font-family: "Space Grotesk", sans-serif;
+
+      font-size: 32px;
+
+      line-height: 1.15;
+
+      font-weight: 700;
+
+      letter-spacing: -.025em;
+
+      margin-bottom: 12px;
+    }
+
+    .more-title em {
+      font-style: normal;
+
+      color: var(--gold);
+    }
+
+    .more-desc {
+      position: relative;
+
+      max-width: 600px;
+
+      margin-bottom: 22px;
+
+      color: var(--ink-muted);
+
+      font-size: 14.5px;
+
+      line-height: 1.75;
+    }
+
+    .chip-row {
+      position: relative;
+
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 8px;
+    }
+
+    .chip {
+      padding: 7px 11px;
+
+      border-radius: 8px;
+
+      background: rgba(255,255,255,.025);
+
+      border: 1px solid var(--line-soft);
+
+      color: var(--ink-muted);
+
+      font-family: "JetBrains Mono", monospace;
+
+      font-size: 10.5px;
+    }
+
+    .btn-gold {
+      position: relative;
+
+      display: inline-flex;
+
+      align-items: center;
+      justify-content: center;
+
+      gap: 10px;
+
+      padding: 14px 24px;
+
+      border-radius: 999px;
+
+      background: var(--gold);
+
+      color: #08080D;
+
+      font-size: 13px;
+
+      font-weight: 700;
+
+      white-space: nowrap;
+
+      transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+    }
+
+    .btn-gold:hover {
+      transform: translateY(-3px);
+
+      box-shadow:
+        0 14px 30px -10px rgba(232,160,32,.55);
+    }
+
+
+    /* =========================================================
+       FOOTER
+       ========================================================= */
+
+    footer {
+      margin-top: 20px;
+
+      padding: 55px 0 30px;
+
+      background: var(--bg-soft);
+
+      border-top: 1px solid var(--line);
+    }
+
+    .foot-top {
+      display: flex;
+
+      justify-content: space-between;
+      align-items: flex-end;
+
+      gap: 30px;
+
+      margin-bottom: 30px;
+    }
+
+    .foot-name {
+      font-family: "Space Grotesk", sans-serif;
+
+      font-size: 28px;
+
+      font-weight: 700;
+    }
+
+    .foot-tag {
+      max-width: 700px;
+
+      margin-top: 8px;
+
+      color: var(--ink-faint);
+
+      font-family: "JetBrains Mono", monospace;
+
+      font-size: 10px;
+
+      line-height: 1.7;
+
+      letter-spacing: .04em;
+    }
+
+    .foot-links {
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 18px;
+    }
+
+    .foot-links a {
+      color: var(--ink-muted);
+
+      font-size: 13px;
+
+      transition:
+        color .2s ease;
+    }
+
+    .foot-links a:hover {
+      color: var(--pink);
+    }
+
+    .foot-bottom {
+      display: flex;
+
+      justify-content: space-between;
+
+      flex-wrap: wrap;
+
+      gap: 10px;
+
+      padding-top: 20px;
+
+      border-top: 1px solid var(--line);
+
+      color: var(--ink-faint);
+
+      font-family: "JetBrains Mono", monospace;
+
+      font-size: 10.5px;
+    }
+
+
+    /* =========================================================
+       SCROLL REVEAL
+       ========================================================= */
+
+    .reveal {
+      opacity: 0;
+
+      transform: translateY(28px);
+
+      transition:
+        opacity .8s cubic-bezier(.16,1,.3,1),
+        transform .8s cubic-bezier(.16,1,.3,1);
+    }
+
+    .reveal.is-in {
+      opacity: 1;
+
+      transform: translateY(0);
+    }
+
+    .project-card.reveal.is-in:hover {
+      transform: translateY(-8px);
+    }
+
+
+    /* =========================================================
+       HERO LOAD ANIMATION
+       ========================================================= */
+
+    .hero-intro {
+      animation:
+        heroLoad .8s cubic-bezier(.16,1,.3,1) both;
+    }
+
+    .metric-wrapper {
+      animation:
+        heroLoad .8s cubic-bezier(.16,1,.3,1) .2s both,
+        heroFloat 6s ease-in-out 1s infinite;
+    }
+
+    @keyframes heroLoad {
+
+      from {
+        opacity: 0;
+
+        transform:
+          translateY(24px);
+      }
+
+      to {
+        opacity: 1;
+
+        transform:
+          translateY(0);
+      }
+
+    }
+
+
+    /* =========================================================
+       RESPONSIVE
+       ========================================================= */
+
+    @media (max-width: 960px) {
+
+      .hero {
+        padding-top: 70px;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+
+        gap: 45px;
+      }
+
+      .metric-card {
+        max-width: 360px;
+      }
+
+      .more-card {
+        grid-template-columns: 1fr;
+      }
+
+    }
+
+
+    @media (max-width: 700px) {
+
+      .wrap {
+        width:
+          min(
+            calc(100% - 32px),
+            var(--container)
+          );
+      }
+
+      .statusbar .wrap {
+        min-height: 60px;
+      }
+
+      .status-loc {
+        display: none;
+      }
+
+      .hero {
+        padding: 60px 0 55px;
+      }
+
+      .hero h1 {
+        font-size:
+          clamp(
+            42px,
+            12vw,
+            62px
+          );
+      }
+
+      .lede {
+        font-size: 15.5px;
+
+        line-height: 1.7;
+      }
+
+      section {
+        padding: 58px 0;
+      }
+
+      .section-head {
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 12px;
+      }
+
+      .section-title {
+        font-size: 30px;
+      }
+
+      .preview-area {
+        height: 215px;
+      }
+
+      .more-card {
+        padding: 30px 24px;
+      }
+
+      .foot-top {
+        align-items: flex-start;
+
+        flex-direction: column;
+      }
+
+    }
+
+
+    @media (max-width: 480px) {
+
+      .cta-row {
+        width: 100%;
+      }
+
+      .cta-row .btn {
+        flex: 1;
+      }
+
+      .hero-meta {
+        gap: 6px;
+      }
+
+      .hero-chip {
+        font-size: 9px;
+      }
+
+      .metric-card {
+        padding: 36px 20px;
+      }
+
+      .metric-num {
+        font-size: 82px;
+      }
+
+      .preview-area {
+        height: 205px;
+      }
+
+      .card-footer {
+        padding: 16px;
+      }
+
+      .card-name {
+        font-size: 14px;
+      }
+
+      .card-type {
+        font-size: 9.5px;
+      }
+
+      .card-arrow {
+        width: 34px;
+        height: 34px;
+      }
+
+    }
+
+
+    /* =========================================================
+       REDUCED MOTION
+       ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+
+      .reveal {
+        opacity: 1;
+
+        transform: none;
+      }
+
+      .project-card:hover,
+      .project-card.reveal.is-in:hover {
+        transform: none;
+      }
+
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+  <!-- =======================================================
+       BACKGROUND
+       ======================================================= -->
+
+  <div
+    class="grid-overlay"
+    aria-hidden="true"
+  ></div>
+
+
+  <!-- =======================================================
+       ACCESSIBILITY
+       ======================================================= -->
+
+  <a
+    href="#main"
+    class="skip-link"
+  >
+    Skip to content
+  </a>
+
+
+  <!-- =======================================================
+       STATUS BAR
+       ======================================================= -->
+
+  <header class="statusbar">
+
+    <div class="wrap">
+
+      <div class="status-left">
+
+        <span
+          class="status-dot"
+          aria-hidden="true"
+        ></span>
+
+        <span class="status-text mono">
+
+          <strong>Brian Gicaro D.</strong>
+
+          — Portfolio & Live Site Projects
+
+        </span>
+
+        <span class="status-loc mono">
+
+          · Philippines · GMT+8 PHT
+
+        </span>
+
+      </div>
+
+
+      <nav
+        class="cta-row"
+        aria-label="Primary"
+      >
+
+        <a
+          class="btn btn-secondary"
+          href="https://briangicaro2026-profme-resume.netlify.app"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          ← Back to CV
+        </a>
+
+        <a
+          class="btn btn-primary"
+          href="mailto:gicarobrian2011maybhrai@gmail.com"
+        >
+          Email Me
+        </a>
+
+      </nav>
+
+    </div>
+
+  </header>
+
+
+  <!-- =======================================================
+       MAIN
+       ======================================================= -->
+
+  <main id="main">
+
+
+    <!-- =====================================================
+         HERO
+         ===================================================== -->
+
+    <section
+      class="hero"
+      style="border-top:none;"
+    >
+
+      <div class="wrap hero-grid">
+
+
+        <div class="hero-intro">
+
+          <span class="eyebrow mono">
+            Live Showcase — 2026
+          </span>
+
+
+          <h1>
+
+            Websites Built to
+
+            <span class="grad">
+              Perform.
+            </span>
+
+          </h1>
+
+
+          <p class="lede">
+
+            Bespoke
+            <strong>
+              WordPress, Elementor Pro, and custom HTML/CSS experiences
+            </strong>
+            engineered to elevate brands, improve user experience,
+            and support business growth across local and international markets.
+
+          </p>
+
+
+          <div class="cta-row">
+
+            <a
+              class="btn btn-primary"
+              href="#international"
+            >
+              View Projects ↓
+            </a>
+
+            <a
+              class="btn btn-secondary"
+              href="mailto:gicarobrian2011maybhrai@gmail.com"
+            >
+              Let's Work Together
+            </a>
+
+          </div>
+
+
+          <div class="hero-meta">
+
+            <span class="hero-chip">
+              WordPress
+            </span>
+
+            <span class="hero-chip">
+              Elementor Pro
+            </span>
+
+            <span class="hero-chip">
+              HTML / CSS
+            </span>
+
+            <span class="hero-chip">
+              SEO
+            </span>
+
+            <span class="hero-chip">
+              GHL Automation
+            </span>
+
+            <span class="hero-chip">
+              Graphic Design
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <!-- METRIC -->
+
+        <div class="metric-wrapper">
+
+          <div class="metric-card">
+
+            <div class="metric-num">
+              13
+            </div>
+
+            <div class="metric-label">
+              Live Projects & Counting
+            </div>
+
+            <div class="metric-status">
+              Available for Projects
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         LOCAL PROJECTS
+         ===================================================== -->
+
+    <section id="local">
+
+      <div class="wrap">
+
+        <div class="section-head reveal">
+
+          <div>
+
+            <span class="category-badge badge-local">
+              🇵🇭 Philippines
+            </span>
+
+            <h2 class="section-title">
+              Local Clients
+            </h2>
+
+          </div>
+
+          <div class="section-num mono">
+            3 Projects
+          </div>
+
+        </div>
+
+
+        <div class="project-grid">
+
+
+          <!-- JDMMH -->
+
+          <a
+            class="project-card reveal"
+            href="https://jdmh.ph/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Visit Dr. Jesus C. Delgado Memorial Hospital website"
+          >
+
+            <div class="browser-chrome">
+
+              <div
+                class="chrome-dots"
+                aria-hidden="true"
+              >
+
+                <span class="chrome-dot dot-red"></span>
+                <span class="chrome-dot dot-yellow"></span>
+                <span class="chrome-dot dot-green"></span>
+
+              </div>
+
+              <div class="chrome-bar">
+                jdmh.ph
+              </div>
+
+            </div>
+
+
+            <div class="preview-area">
+
+              <img
+                class="preview-img"
+                src="https://s0.wp.com/mshots/v1/https%3A%2F%2Fjdmh.ph?w=800"
+                alt="Preview of Dr. Jesus C. Delgado Memorial Hospital website"
+                loading="lazy"
+                decoding="async"
+                width="800"
+                height="450"
+              >
+
+              <div
+                class="preview-overlay"
+                aria-hidden="true"
+              >
+
+                <span class="preview-visit">
+                  Visit Site ↗
+                </span>
+
+                <span class="preview-hint">
+                  jdmh.ph
+                </span>
+
+              </div>
+
+            </div>
+
+
+            <div class="card-footer">
+
+              <div>
+
+                <div class="card-name">
+                  Dr. Jesus C. Delgado Memorial Hospital
+                </div>
+
+                <div class="card-type">
+                  WordPress · Elementor Pro · Healthcare
+                </div>
+
+              </div>
+
+              <span
+                class="card-arrow"
+                aria-hidden="true"
+              >
+                ↗
+              </span>
+
+            </div>
+
+          </a>
+
+
+          <!-- METROPOLITAN -->
+
+          <a
+            class="project-card reveal"
+            style="transition-delay:.1s;"
+            href="https://metropolitanmedicalcenter.com.ph/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Visit Metropolitan Medical Center website"
+          >
+
+            <div class="browser-chrome">
+
+              <div
+                class="chrome-dots"
+                aria-hidden="true"
+              >
+
+                <span class="chrome-dot dot-red"></span>
+                <span class="chrome-dot dot-yellow"></span>
+                <span class="chrome-dot dot-green"></span>
+
+              </div>
+
+              <div class="chrome-bar">
+                metropolitanmedicalcenter.com.ph
+              </div>
+
+            </div>
+
+
+            <div class="preview-area">
+
+              <img
+                class="preview-img"
+                src="https://s0.wp.com/mshots/v1/https%3A%2F%2Fmetropolitanmedicalcenter.com.ph?w=800"
+                alt="Preview of Metropolitan Medical Center website"
+                loading="lazy"
+                decoding="async"
+                width="800"
+                height="450"
+              >
+
+              <div
+                class="preview-overlay"
+                aria-hidden="true"
+              >
+
+                <span class="preview-visit">
+                  Visit Site ↗
+                </span>
+
+                <span class="preview-hint">
+                  metropolitanmedicalcenter.com.ph
+                </span>
+
+              </div>
+
+            </div>
+
+
+            <div class="card-footer">
+
+              <div>
+
+                <div class="card-name">
+                  Metropolitan Medical Center
+                </div>
+
+                <div class="card-type">
+                  WordPress · Elementor Pro · Healthcare
+                </div>
+
+              </div>
+
+              <span
+                class="card-arrow"
+                aria-hidden="true"
+              >
+                ↗
+              </span>
+
+            </div>
+
+          </a>
+
+
+        <!-- COMGLASCO -->
+
+<a
+  class="project-card reveal"
+  style="transition-delay:.2s;"
+  href="https://www.comglasco.com/"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Visit COMGLASCO Aguila Glass website"
+>
+
+  <div class="browser-chrome">
+
+    <div
+      class="chrome-dots"
+      aria-hidden="true"
+    >
+      <span class="chrome-dot dot-red"></span>
+      <span class="chrome-dot dot-yellow"></span>
+      <span class="chrome-dot dot-green"></span>
+    </div>
+
+    <div class="chrome-bar">
+      comglasco.com
+    </div>
+
+  </div>
+
+
+  <div class="preview-area">
+
+    <img
+      class="preview-img"
+      src="https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.comglasco.com%2F?w=1200&v=20260814"
+      alt="Preview of COMGLASCO Aguila Glass website"
+      loading="lazy"
+      decoding="async"
+      width="1200"
+      height="675"
+    >
+
+    <div
+      class="preview-overlay"
+      aria-hidden="true"
+    >
+
+      <span class="preview-visit">
+        Visit Site ↗
+      </span>
+
+      <span class="preview-hint">
+        comglasco.com
+      </span>
+
+    </div>
+
+  </div>
+
+
+  <div class="card-footer">
+
+    <div>
+
+      <div class="card-name">
+        COMGLASCO Aguila Glass
+      </div>
+
+      <div class="card-type">
+        WordPress · Elementor Pro · Automotive Glass
+      </div>
+
+    </div>
+
+    <span
+      class="card-arrow"
+      aria-hidden="true"
+    >
+      ↗
+    </span>
+
+  </div>
+
+</a> 
+
+
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- =====================================================
+         INTERNATIONAL PROJECTS
+         ===================================================== -->
+
+    <section id="international">
+
+      <div class="wrap">
+
+        <div class="section-head reveal">
+
+          <div>
+
+            <span class="category-badge badge-intl">
+              🌍 International
+            </span>
+
+            <h2 class="section-title">
+              US, UK, Singapore & Ghana Clients
+            </h2>
+
+          </div>
+
+          <div class="section-num mono">
+            10 Projects
+          </div>
+
+        </div>
+
+
+        <div class="project-grid">
+
+
+          <!-- OUR LEGACY -->
+
+          <a
+            class="project-card reveal"
+            href="https://wordpress-1450184-6100681.cloudwaysapps.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Visit Our Legacy Plumbing project"
+          >
+
+            <div class="browser-chrome">
+
+              <div
+                class="chrome-dots"
+                aria-hidden="true"
+              >
+
+                <span class="chrome-dot dot-red"></span>
+                <span class="chrome-dot dot-yellow"></span>
+                <span class="chrome-dot dot-green"></span>
+
+              </div>
+
+              <div class="chrome-bar">
+                wordpress-1450184-6100681.cloudwaysapps.com
+              </div>
+
+            </div>
+
+
+            <div class="preview-area">
+
+              <img
+                class="preview-img"
+                src="https://s0.wp.com/mshots/v1/https%3A%2F%2Fwordpress-1450184-6100681.cloudwaysapps.com?w=800"
+                alt="Preview of Our Legacy Plumbing website"
+                loading="lazy"
+                decoding="async"
+                width="800"
+                height="450"
+              >
+
+              <div
+                class="preview-overlay"
+                aria-hidden="true"
+              >
+
+                <span class="preview-visit">
+                  Visit Site ↗
+                </span>
+
+                <span class="preview-hint">
+                  Cloudways Staging
+                </span>
+
+              </div>
+
+            </div>
+
+
+            <div class="card-footer">
+
+              <div>
+
+                <div class="card-name">
+                  Our Legacy Plumbing LLC
+                </div>
+
+                <div class="card-type">
+                  WordPress · Elementor Pro · Plumbing
+                </div>
+
+              </div>
+
+              <span
+                class="card-arrow"
+                aria-hidden="true"
+              >
+                ↗
+              </span>
+
+            </div>
+
+          </a>
+
+
+          <!-- TOTAL CLOSING SOLUTIONS -->
+
+          <a
+            class="project-card reveal"
+            style="transition-delay:.1s;"
+            href="https://totalclosingsolutions.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Visit Total Closing Solutions website"
+          >
+
+            <div class="browser-chrome">
+
+              <div
+                class="chrome-dots"
+                aria-hidden="true"
+              >
+
+                <span class="chrome-dot dot-red"></span>
+                <span class="chrome-dot dot-yellow"></span>
+                <span class="chrome-dot dot-green"></span>
+
+              </div>
+
+              <div class="chrome-bar">
+                totalclosingsolutions.com
+              </div>
+
+            </div>
+
+<div class="preview-area">
+
+  <img
+    class="preview-img"
+    src="https://s0.wp.com/mshots/v1/https%3A%2F%2Ftotalclosingsolutions.com%2F?w=1200&v=20260814"
+    alt="Preview of Total Closing Solutions website"
+    loading="lazy"
+    decoding="async"
+    width="1200"
+    height="675"
+  >
+
+  <div
+    class="preview-overlay"
+    aria-hidden="true"
+  >
+
+    <span class="preview-visit">
+      Visit Site ↗
+    </span>
+
+    <span class="preview-hint">
+      totalclosingsolutions.com
+    </span>
+
+  </div>
+
+</div>
+
+            <div class="card-footer">
+
+              <div>
+
+                <div class="card-name">
+                  Total Closing Solutions
+                </div>
+
+                <div class="card-type">
+                  WordPress · Elementor Pro · Remote Online Notarization
+                </div>
+
+              </div>
+
+              <span
+                class="card-arrow"
+                aria-hidden="true"
+              >
+                ↗
+              </span>
+
+            </div>
+
+          </a>
+
+
+          <!-- LOFT CONVERSIONS -->
+
+          <a
+            class="project-card reveal"
+            style="transition-delay:.2s;"
+            href="https://www.loftconversionssomerset.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Visit Loft Conversions Somerset website"
+          >
+
+            <div class="browser-chrome">
+
+              <div
+                class="chrome-dots"
+                aria-hidden="true"
+              >
+
+                <span class="chrome-dot dot-red"></span>
+                <span class="chrome-dot dot-yellow"></span>
+                <span class="chrome-dot dot-green"></span>
+
+              </div>
+
+              <div class="chrome-bar">
+                loftconversionssomerset.com
+              </div>
+
+            </div>
+
+
+            <div class="preview-area">
+
+              <img
+                class="preview-img"
+                src="https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.loftconversionssomerset.com%2F?w=800"
+                alt="Preview of Loft Conversions Somerset website"
+                loading="lazy"
+                decoding="async"
+                width="800"
+                height="450"
+              >
+
+              <div
+                class="preview-overlay"
+                aria-hidden="true"
+              >
+
+                <span class="preview-visit">
+                  Visit Site ↗
+                </span>
+
+                <span class="preview-hint">
+                  loftconversionssomerset.com
+                </span>
+
+              </div>
+
+            </div>
+
+
+            <div class="card-footer">
+
+              <div>
+
+                <div class="card-name">
+                  Loft Conversions Somerset
+                </div>
+
+                <div class="card-type">
+                  WordPress · Elementor Pro · Construction
+                </div>
+
+              </div>
+
+              <span
+                class="card-arrow"
+                aria-hidden="true"
+              >
+                ↗
+              </span>
+
+            </div>
+
+          </a>
+
+
+          <!-- GREEN LAKE -->
+
+          <a
+            class="project-card reveal"
+            href="https://greenlakefestival.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Visit Green Lake Festival of Music website"
+          >
+
+            <div class="browser-chrome">
+
+              <div
+                class="chrome-dots"
+                aria-hidden="true"
+              >
+
+                <span class="chrome-dot dot-red"></span>
+                <span class="chrome-dot dot-yellow"></span>
+                <span class="chrome-dot dot-green"></span>
+
+              </div>
+
+              <div class="chrome-bar">
+                greenlakefestival.org
+              </div>
+
+            </div>
+
+
+            <div class="preview-area">
+
+              <img
+                class="preview-img"
+                src="https://s0.wp.com/mshots/v1/https%3A%2F%2Fgreenlakefestival.org?w=800"
+                alt="Preview of Green Lake Festival of Music website"
+                loading="lazy"
+                decoding="async"
+                width="800"
+                height="450"
+              >
+
+              <div
+                class="preview-overlay"
+                aria-hidden="true"
+              >
+
+                <span class="preview-visit">
+                  Visit Site ↗
+                </span>
+
+                <span class="preview-hint">
+                  greenlakefestival.org
+                </span>
+
+              </div>
+
+            </div>
+
+
+            <div class="card-footer">
+
+              <div>
+
+                <div class="card-name">
+                  Green Lake Festival of Music
+                </div>
+
+                <div class="card-type">
+                  WordPress · Elementor Pro · Music Events
+                </div>
+
+              </div>
+
+              <span
+                class="card-arrow"
+                aria-hidden="true"
+              >
+                ↗
+              </span>
+
+            </div>
+
+          </a>
+
+
+          <!-- UNITY TREE -->
+
+          <a
+            class="project-card reveal"
+            style="transition-delay:.1s;"
+            href="https://unitytreefores.wpenginepowered.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Visit Unity Tree and Forestry website"
+          >
+
+            <div class="browser-chrome">
+
+              <div
+                class="chrome-dots"
+                aria-hidden="true"
+              >
+
+                <span class="chrome-dot dot-red"></span>
+                <span class="chrome-dot dot-yellow"></span>
+                <span class="chrome-dot dot-green"></span>
+
+              </div>
+
+              <div class="chrome-bar">
+                unitytreeandforestry.com
+              </div>
+
+            </div>
+
+
+            <div class="preview-area">
+
+              <img
+                class="preview-img"
+                src="https://s0.wp.com/mshots/v1/https%3A%2F%2Funitytreefores.wpenginepowered.com?w=800"
+                alt="Preview of Unity Tree and Forestry website"
+                loading="lazy"
+                decoding="async"
+                width="800"
+                height="450"
+              >
+
+              <div
+                class="preview-overlay"
+                aria-hidden="true"
+              >
+
+                <span class="preview-visit">
+                  Visit Site ↗
+                </span>
+
+                <span class="preview-hint">
+                  unitytreeandforestry.com
+                </span>
+
+              </div>
+
+            </div>
+
+
+            <div class="card-footer">
+
+              <div>
+
+                <div class="card-name">
+                  Unity Tree and Forestry
+                </div>
+
+                <div class="card-type">
+                  WordPress · Elementor Pro · Environmental
+                </div>
+
+              </div>
+
+              <span
+                class="card-arrow"
+                aria-hidden="true"
+              >
+                ↗
+              </span>
+
+            </div>
+
+          </a>
+
+
+          <!-- NEXT GENERATION -->
+
+          <a
+            class="project-card reveal"
+            style="transition-delay:.2s;"
+            href="https://nextgenerationinsulation.co.uk/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Visit Next Generation Insulation website"
+          >
+
+            <div class="browser-chrome">
+
+              <div
+                class="chrome-dots"
+                aria-hidden="true"
+              >
+
+                <span class="chrome-dot dot-red"></span>
+                <span class="chrome-dot dot-yellow"></span>
+                <span class="chrome-dot dot-green"></span>
+
+              </div>
+
+              <div class="chrome-bar">
+                nextgenerationinsulation.co.uk
+              </div>
+
+            </div>
+
+
+            <div class="preview-area">
+
+              <img
+                class="preview-img"
+                src="https://s0.wp.com/mshots/v1/https%3A%2F%2Fnextgenerationinsulation.co.uk%2F?w=800"
+                alt="Preview of Next Generation Insulation website"
+                loading="lazy"
+                decoding="async"
+                width="800"
+                height="450"
+              >
+
+              <div
+                class="preview-overlay"
+                aria-hidden="true"
+              >
+
+                <span class="preview-visit">
+                  Visit Site ↗
+                </span>
+
+                <span class="preview-hint">
+                  nextgenerationinsulation.co.uk
+                </span>
+
+              </div>
+
+            </div>
+
+
+            <div class="card-footer">
+
+              <div>
+
+                <div class="card-name">
+                  Next Generation Insulation Ltd.
+                </div>
+
+                <div class="card-type">
+                  WordPress · Elementor Pro · Contractor
+                </div>
+
+              </div>
+
+              <span
+                class="card-arrow"
+                aria-hidden="true"
+              >
+                ↗
+              </span>
+
+            </div>
+
+          </a>
+
+
+          <!-- PRETTY FACES -->
+
+          <a
+            class="project-card reveal"
+            href="https://dr-prettyfacesatla-jingjing.netlify.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Visit Pretty Faces Atlanta website"
+          >
+
+            <div class="browser-chrome">
+
+              <div
+                class="chrome-dots"
+                aria-hidden="true"
+              >
+
+                <span class="chrome-dot dot-red"></span>
+                <span class="chrome-dot dot-yellow"></span>
+                <span class="chrome-dot dot-green"></span>
+
+              </div>
+
+              <div class="chrome-bar">
+                dr-prettyfacesatla-jingjing.netlify.app
+              </div>
+
+            </div>
+
+
+            <div class="preview-area">
+
+              <img
+                class="preview-img"
+                src="https://s0.wp.com/mshots/v1/https%3A%2F%2Fdr-prettyfacesatla-jingjing.netlify.app?w=800"
+                alt="Preview of Pretty Faces Atlanta website"
+                loading="lazy"
+                decoding="async"
+                width="800"
+                height="450"
+              >
+
+              <div
+                class="preview-overlay"
+                aria-hidden="true"
+              >
+
+                <span class="preview-visit">
+                  Visit Site ↗
+                </span>
+
+                <span class="preview-hint">
+                  Pretty Faces Atlanta
+                </span>
+
+              </div>
+
+            </div>
+
+
+            <div class="card-footer">
+
+              <div>
+
+                <div class="card-name">
+                  Pretty Faces Atlanta
+                </div>
+
+                <div class="card-type">
+                  HTML · CSS · Medical Aesthetics
+                </div>
+
+              </div>
+
+              <span
+                class="card-arrow"
+                aria-hidden="true"
+              >
+                ↗
+              </span>
+
+            </div>
+
+          </a>
+
+
+          <!-- PC ANG BUILDERS -->
+
+          <a
+            class="project-card reveal"
+            style="transition-delay:.1s;"
+            href="https://briangicaro2026wpwebsites-mockup.github.io/pcangbuilders.com.sg/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Visit PC Ang Builders website"
+          >
+
+            <div class="browser-chrome">
+
+              <div
+                class="chrome-dots"
+                aria-hidden="true"
+              >
+
+                <span class="chrome-dot dot-red"></span>
+                <span class="chrome-dot dot-yellow"></span>
+                <span class="chrome-dot dot-green"></span>
+
+              </div>
+
+              <div class="chrome-bar">
+                briangicaro2026wpwebsites-mockup.github.io/pcangbuilders.com.sg/
+              </div>
+
+            </div>
+
+
+            <div class="preview-area">
+
+              <img
+                class="preview-img"
+                src="https://s0.wp.com/mshots/v1/https%3A%2F%2Fbriangicaro2026wpwebsites-mockup.github.io%2Fpcangbuilders.com.sg%2F?w=800"
+                alt="Preview of PC Ang Builders website"
+                loading="lazy"
+                decoding="async"
+                width="800"
+                height="450"
+              >
+
+              <div
+                class="preview-overlay"
+                aria-hidden="true"
+              >
+
+                <span class="preview-visit">
+                  Visit Site ↗
+                </span>
+
+                <span class="preview-hint">
+                  pcangbuilders.com.sg
+                </span>
+
+              </div>
+
+            </div>
+
+
+            <div class="card-footer">
+
+              <div>
+
+                <div class="card-name">
+                  PC Ang Builders
+                </div>
+
+                <div class="card-type">
+                  WordPress · Elementor Pro · Construction
+                </div>
+
+              </div>
+
+              <span
+                class="card-arrow"
+                aria-hidden="true"
+              >
+                ↗
+              </span>
+
+            </div>
+
+          </a>
+
+
+          <!-- PTANA METRO ATL -->
+
+          <a
+            class="project-card reveal"
+            style="transition-delay:.2s;"
+            href="https://vmghgejo.elementor.cloud/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Visit PTANA Metro ATL Chapter website"
+          >
+
+            <div class="browser-chrome">
+
+              <div
+                class="chrome-dots"
+                aria-hidden="true"
+              >
+
+                <span class="chrome-dot dot-red"></span>
+                <span class="chrome-dot dot-yellow"></span>
+                <span class="chrome-dot dot-green"></span>
+
+              </div>
+
+              <div class="chrome-bar">
+                vmghgejo.elementor.cloud
+              </div>
+
+            </div>
+
+
+            <div class="preview-area">
+
+              <img
+                class="preview-img"
+                src="https://s0.wp.com/mshots/v1/https%3A%2F%2Fvmghgejo.elementor.cloud%2F?w=800"
+                alt="Preview of PTANA Metro ATL Chapter website"
+                loading="lazy"
+                decoding="async"
+                width="800"
+                height="450"
+              >
+
+              <div
+                class="preview-overlay"
+                aria-hidden="true"
+              >
+
+                <span class="preview-visit">
+                  Visit Site ↗
+                </span>
+
+                <span class="preview-hint">
+                  PTANA Metro ATL Chapter
+                </span>
+
+              </div>
+
+            </div>
+
+
+            <div class="card-footer">
+
+              <div>
+
+                <div class="card-name">
+                  PTANA Metro ATL Chapter
+                </div>
+
+                <div class="card-type">
+                  Elementor · Travel Association · Non-profit
+                </div>
+
+              </div>
+
+              <span
+                class="card-arrow"
+                aria-hidden="true"
+              >
+                ↗
+              </span>
+
+            </div>
+
+          </a>
+
+
+          <!-- SELLING ACCRA -->
+
+          <a
+            class="project-card reveal"
+            style="transition-delay:.3s;"
+            href="https://sellingaccra.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Visit Selling Accra real estate website"
+          >
+
+            <div class="browser-chrome">
+
+              <div
+                class="chrome-dots"
+                aria-hidden="true"
+              >
+
+                <span class="chrome-dot dot-red"></span>
+                <span class="chrome-dot dot-yellow"></span>
+                <span class="chrome-dot dot-green"></span>
+
+              </div>
+
+              <div class="chrome-bar">
+                sellingaccra.com
+              </div>
+
+            </div>
+
+
+            <div class="preview-area">
+
+              <img
+                class="preview-img"
+                src="https://s0.wp.com/mshots/v1/https%3A%2F%2Fsellingaccra.com%2F?w=800"
+                alt="Preview of Selling Accra real estate website"
+                loading="lazy"
+                decoding="async"
+                width="800"
+                height="450"
+              >
+
+              <div
+                class="preview-overlay"
+                aria-hidden="true"
+              >
+
+                <span class="preview-visit">
+                  Visit Site ↗
+                </span>
+
+                <span class="preview-hint">
+                  sellingaccra.com
+                </span>
+
+              </div>
+
+            </div>
+
+
+            <div class="card-footer">
+
+              <div>
+
+                <div class="card-name">
+                  Selling Accra
+                </div>
+
+                <div class="card-type">
+                  Elementor · Real Estate · Ghana
+                </div>
+
+              </div>
+
+              <span
+                class="card-arrow"
+                aria-hidden="true"
+              >
+                ↗
+              </span>
+
+            </div>
+
+          </a>
+
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- =====================================================
+         ADDITIONAL SERVICES
+         ===================================================== -->
+
+    <section id="more">
+
+      <div class="wrap">
+
+        <div class="more-card reveal">
+
+          <div>
+
+            <h2 class="more-title">
+
+              Beyond WordPress.
+
+              <br>
+
+              <em>More Digital Skills.</em>
+
+            </h2>
+
+
+            <p class="more-desc">
+
+              Beyond WordPress, I also work across Shopify,
+              graphic design, branding, social media, video editing,
+              SEO, and marketing support.
+
+            </p>
+
+
+            <div class="chip-row">
+
+              <span class="chip">
+                Shopify
+              </span>
+
+              <span class="chip">
+                Graphic Design
+              </span>
+
+              <span class="chip">
+                Social Media
+              </span>
+
+              <span class="chip">
+                Branding
+              </span>
+
+              <span class="chip">
+                Video Editing
+              </span>
+
+              <span class="chip">
+                SEO
+              </span>
+
+              <span class="chip">
+                GHL Automation
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div>
+
+            <a
+              href="https://linktr.ee/bhraigicaro"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-gold"
+            >
+              View Full Portfolio ↗
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+  </main>
+
+
+  <!-- =======================================================
+       FOOTER
+       ======================================================= -->
+
+  <footer>
+
+    <div class="wrap">
+
+      <div class="foot-top">
+
+        <div>
+
+          <div class="foot-name">
+            Brian Gicaro D.
+          </div>
+
+          <div class="foot-tag">
+            WORDPRESS DEVELOPER · ELEMENTOR PRO · WEB DESIGN · SEO ·
+            GHL AUTOMATION · GRAPHIC DESIGN · SOCIAL MEDIA
+          </div>
+
+        </div>
+
+
+        <div class="foot-links">
+
+          <a
+            href="mailto:gicarobrian2011maybhrai@gmail.com"
+          >
+            Email
+          </a>
+
+          <a
+            href="tel:+639692133420"
+          >
+            Call
+          </a>
+
+          <a
+            href="https://github.com/bhraigicaro"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub
+          </a>
+
+          <a
+            href="https://linktr.ee/bhraigicaro"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Linktree
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <div class="foot-bottom">
+
+        <span>
+          © 2026 Brian Gicaro D. — WordPress Developer & Web Designer
+        </span>
+
+        <span>
+          Philippines — GMT+8
+        </span>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <!-- =======================================================
+       JAVASCRIPT
+       ======================================================= -->
+
+  <script>
+
+    /* =========================================================
+       SCROLL REVEAL
+       ========================================================= */
+
+    (() => {
+
+      const items =
+        document.querySelectorAll(".reveal");
+
+      if (
+        !("IntersectionObserver" in window)
+      ) {
+
+        items.forEach(
+          item =>
+            item.classList.add("is-in")
+        );
+
+        return;
+      }
+
+
+      const observer =
+        new IntersectionObserver(
+
+          entries => {
+
+            entries.forEach(entry => {
+
+              if (!entry.isIntersecting) {
+                return;
+              }
+
+              entry.target.classList.add("is-in");
+
+              observer.unobserve(
+                entry.target
+              );
+
+            });
+
+          },
+
+          {
+            threshold: .08,
+
+            rootMargin:
+              "0px 0px -40px 0px"
+          }
+
+        );
+
+
+      items.forEach(item => {
+
+        observer.observe(item);
+
+      });
+
+    })();
+
+
+    /* =========================================================
+       IMAGE FALLBACK
+       ========================================================= */
+
+    document
+      .querySelectorAll(".preview-img")
+      .forEach(img => {
+
+        img.addEventListener(
+          "error",
+          () => {
+
+            img.style.opacity = "0";
+
+            const parent =
+              img.closest(".preview-area");
+
+            if (!parent) {
+              return;
+            }
+
+            parent.classList.add(
+              "preview-failed"
+            );
+
+          },
+          { once: true }
+        );
+
+      });
+
+
+    /* =========================================================
+       EXTERNAL LINKS
+       ========================================================= */
+
+    document
+      .querySelectorAll(
+        'a[target="_blank"]'
+      )
+      .forEach(link => {
+
+        link.addEventListener(
+          "click",
+          () => {
+
+            link.setAttribute(
+              "rel",
+              "noopener noreferrer"
+            );
+
+          }
+        );
+
+      });
+
+  </script>
+
+</body>
+</html>
